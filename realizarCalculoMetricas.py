@@ -123,3 +123,31 @@ print("Valores previstos", valores_previstos)
 
 # Imprimir el valor de RMSLE
 print("RMSLE    ", rmsle)'''
+
+
+
+#Task 4: Evaluation in Shelter Animal Outcomes Kaggle Competition
+
+import numpy as np
+from sklearn.metrics import log_loss
+
+# Generar los datos aleatorios para etiquetas reales y probabilidades previstas
+t4_predicted = np.random.random(size=(7, 5)).T + 0.5
+t4_predicted = np.round((t4_predicted / np.sum(t4_predicted, axis=0)), 2).T
+
+t4_actual = np.eye(5)[np.random.randint(5, size=len(t4_predicted))].astype(int)
+
+print ("actual")
+print (t4_actual)
+print ("\npredicted")
+print (t4_predicted)
+
+# Calcular la métrica logloss
+logloss = log_loss(t4_actual, t4_predicted)
+
+# Redondear el resultado a tres decimales
+logloss = round(logloss, 3)
+
+
+
+print("\nLogloss:", logloss)
