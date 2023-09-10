@@ -70,4 +70,56 @@ tpr = round(tpr, 3)
 print("Métrica de Sensibilidad:", tpr)
 
 
+
+
 #Task 3: Evaluation in New York City Taxi Trip Duration Kaggle Competition
+
+
+import numpy as np
+
+# Generar los datos
+t3_actual = np.random.randint(80, size=15) + 20
+t3_predicted = np.random.randint(80, size=15) + 20
+
+# Calcular los logaritmos naturales de los valores reales y previstos
+log_actual = np.log1p(t3_actual)
+log_predicted = np.log1p(t3_predicted)
+
+# Calcular la diferencia cuadrática entre los logaritmos
+squared_log_diff = (log_actual - log_predicted) ** 2
+print ("actual   ", t3_actual)
+print ("predicted", t3_predicted)
+
+'''import numpy as np
+
+# Generar los datos aleatorios para valores reales y previstos
+valores_reales = np.random.randint(80, size=15) + 20  # t3_actual
+valores_previstos = np.random.randint(80, size=15) + 20  # t3_predicted
+
+# Calcular los logaritmos naturales de los valores reales y previstos
+log_valores_reales = np.log1p(valores_reales)
+log_valores_previstos = np.log1p(valores_previstos)
+
+# Calcular la diferencia cuadrática entre los logaritmos
+diferencia_cuadratica_log = (log_valores_reales - log_valores_previstos) ** 2'''
+
+# Calcular el RMSLE
+rmsle = np.sqrt(np.mean(squared_log_diff))
+
+# Redondear el resultado a tres decimales
+rmsle = round(rmsle, 3)
+
+print("RMSLE    ", rmsle)
+
+''''# Calcular el RMSLE (Root Mean Squared Logarithmic Error o "Error Cuadrático Medio Logarítmico")
+rmsle = np.sqrt(np.mean(diferencia_cuadratica_log))
+
+# Redondear el resultado a tres decimales
+rmsle = round(rmsle, 3)
+
+# Imprimir los valores reales y previstos
+print("Valores reales   ", valores_reales)
+print("Valores previstos", valores_previstos)
+
+# Imprimir el valor de RMSLE
+print("RMSLE    ", rmsle)'''
